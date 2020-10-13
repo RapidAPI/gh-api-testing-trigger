@@ -35,7 +35,7 @@ jobs:
 - `AWS-US-WEST-2` : Oregon
 - `AWS-AP-EAST-1` : Hong Kong
 - `AWS-AP-SOUTH-1` : Mumbai
-- `AWS-AP-SOUTHEAST-1` : 
+- `AWS-AP-SOUTHEAST-1` : Singapore
 - `AWS-AP-NORTHEAST-1` : Tokyo
 - `AWS-EU-CENTRAL-1` : Frankfurt
 - `AWS-EU-WEST-3` : Paris
