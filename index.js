@@ -17,4 +17,18 @@ console.log(`Executing In Location: ${LOCATION}`);
 const ENVIRONMENT = core.getInput('environment') || null;
 console.log(`Executing In Env: ${ENVIRONMENT}`);
 
-core.setOutput("time", 123);
+
+function sleep(time) {
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            res();
+        }, time);
+    });    
+}
+
+const result = await core.group('Execute Test', async () => {
+    await sleep(2000);
+    console.log("AAAAA")
+    core.setOutput("time", 123);
+    return true
+});
