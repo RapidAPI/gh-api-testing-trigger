@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const axios = require('axios');
 
 // CONSTS
 const WAIT_TIME = 1000;
@@ -27,8 +28,33 @@ function sleep(time) {
 }
 
 core.group('Execute Test', async () => {
-    await sleep(2000);
-    console.log("AAAAA")
-    core.setOutput("time", 123);
-    return true
+    // 1. Trigger Test
+    const envString = ENVIRONMENT ? `&enviroment=${ENVIRONMENT}` : '';
+    const testTrigger = (await axios.get(`${API_URL}/test/${TEST_ID}/execute?location=${LOCATION}${envString}`)).data;
+    console.log(testTrigger.message);
+    const executionId = testTrigger.executionId;
+
+    // 2. Perform initial wait -- this is to avoid multiple checks while test is ramping up
+    await sleep(FIRST_WAIT-WAIT_TIME);
+
+    let testResult = null;
+    let tries = 0;
+    while (
+        (!testResult || testResult.status == 'pending') &&
+        tries < MAX_TRIES // safety
+    ) {
+        await sleep(WAIT_TIME);
+        testResult = (await axios.get(`${API_URL}/execution/${executionId}/status`)).data;
+    }
+    delete testResult.report;
+    console.log(testResult);
+
+    // 3. Set Response Data
+    core.setOutput("time", testResult.executionTime);
+    core.setOutput("succesful", testResult.succesful);
+
+    // 4. Fail action if test failed
+    if (!testResult.succesful) {
+        core.setFailed(`Test execution failed. View report here: ${testTrigger.reportUrl}`);
+    }
 });
