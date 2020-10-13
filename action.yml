@@ -1,0 +1,19 @@
+name: 'RapidAPI Testing Trigger'
+description: 'Trigger an API test on RapidAPI Testing'
+inputs:
+  test:
+    description: 'ID of the test to run'
+    required: true
+  location:
+    description: 'The location the test will be executed in'
+    required: true
+    default: 'AWS-US-EAST-1'
+  environment:
+    description: 'The environment ID the test will run in'
+    required: false
+outputs:
+  executionTime:
+    description: 'How long the test took to execute'
+runs:
+  using: 'node12'
+  main: 'index.js'
