@@ -26,7 +26,7 @@ function sleep(time) {
     });    
 }
 
-const result = await core.group('Execute Test', async () => {
+core.group('Execute Test', async () => {
     await sleep(2000);
     console.log("AAAAA")
     core.setOutput("time", 123);
