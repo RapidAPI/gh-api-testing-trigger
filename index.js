@@ -40,7 +40,7 @@ core.group('Execute Test', async () => {
     let testResult = null;
     let tries = 0;
     while (
-        (!testResult || testResult.status == 'pending') &&
+        (!testResult || testResult.status == 'pending' || testResult.status == 'started') &&
         tries < MAX_TRIES // safety
     ) {
         await sleep(WAIT_TIME);
