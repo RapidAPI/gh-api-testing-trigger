@@ -52,6 +52,7 @@ core.group('Execute Test', async () => {
     // 3. Set Response Data
     core.setOutput("time", testResult.executionTime);
     core.setOutput("succesful", testResult.succesful);
+    core.setOutput("reportUrl", testTrigger.reportUrl);
 
     // 4. Fail action if test failed
     if (!testResult.succesful) {
