@@ -34,6 +34,7 @@ core.group('Execute Test', async () => {
     const reportUrl = testTrigger.reportUrl;
     console.log(testTrigger.message);
     console.log("---->" + testTrigger.reportUrl);
+    core.setOutput("reportUrl", reportUrl);
     const executionId = testTrigger.executionId;
 
     // 2. Perform initial wait -- this is to avoid multiple checks while test is ramping up
@@ -54,7 +55,7 @@ core.group('Execute Test', async () => {
     // 3. Set Response Data
     core.setOutput("time", testResult.executionTime);
     core.setOutput("succesful", testResult.succesful);
-    core.setOutput("reportUrl", reportUrl);
+    // core.setOutput("reportUrl", reportUrl);
 
     // 4. Fail action if test failed
     if (!testResult.succesful) {
