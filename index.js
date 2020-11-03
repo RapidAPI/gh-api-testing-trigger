@@ -31,7 +31,9 @@ core.group('Execute Test', async () => {
     // 1. Trigger Test
     const envString = ENVIRONMENT ? `&enviroment=${ENVIRONMENT}` : '';
     const testTrigger = (await axios.get(`${API_URL}/test/${TEST_ID}/execute?location=${LOCATION}${envString}`)).data;
+    const reportUrl = testTrigger.reportUrl;
     console.log(testTrigger.message);
+    console.log("---->" + testTrigger.reportUrl);
     const executionId = testTrigger.executionId;
 
     // 2. Perform initial wait -- this is to avoid multiple checks while test is ramping up
@@ -52,7 +54,7 @@ core.group('Execute Test', async () => {
     // 3. Set Response Data
     core.setOutput("time", testResult.executionTime);
     core.setOutput("succesful", testResult.succesful);
-    core.setOutput("reportUrl", testTrigger.reportUrl);
+    core.setOutput("reportUrl", reportUrl);
 
     // 4. Fail action if test failed
     if (!testResult.succesful) {
