@@ -33,7 +33,6 @@ core.group('Execute Test', async () => {
     const testTrigger = (await axios.get(`${API_URL}/test/${TEST_ID}/execute?location=${LOCATION}${envString}`)).data;
     const reportUrl = testTrigger.reportUrl;
     console.log(testTrigger.message);
-    console.log("---->" + testTrigger.reportUrl);
     core.setOutput("reportUrl", reportUrl);
     const executionId = testTrigger.executionId;
 
@@ -55,7 +54,6 @@ core.group('Execute Test', async () => {
     // 3. Set Response Data
     core.setOutput("time", testResult.executionTime);
     core.setOutput("succesful", testResult.succesful);
-    // core.setOutput("reportUrl", reportUrl);
 
     // 4. Fail action if test failed
     if (!testResult.succesful) {
