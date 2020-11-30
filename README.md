@@ -20,7 +20,7 @@ jobs:
         location: 'AWS-US-WEST-2'
         environment: 'ENV_ID(OPTIONAL)'
     - name: Show Results
-      run: echo "The test took ${{ steps.tstExec.outputs.time }}ms to run"; echo "The test result was ${{ steps.tstExec.outputs.succesful }}"; echo "View Report - {{ steps.tstExec.outputs.reportUrl }}"
+      run: echo "The test took ${{ steps.tstExec.outputs.time }}ms to run"; echo "The test result was ${{ steps.tstExec.outputs.successful }}"; echo "View Report - {{ steps.tstExec.outputs.reportUrl }}"
 ```
 
 ## Inputs
@@ -49,7 +49,7 @@ The environment you want to run the test in. If you don't use environment omit t
 ### `time`
 The time it took the test to execute, in miliseconds (1000ms=s)
 
-### `succesful`
+### `successful`
 True/false based on the result of the test execution
 
 ### `reportUrl`
