@@ -16,7 +16,7 @@ inputs:
 outputs:
   time:
     description: 'How long the test took to execute'
-  succesful:
+  successful:
     description: 'True or false based on the outcome of the test execution'
   reportUrl:
     description: 'Url for the full test execution URL'
