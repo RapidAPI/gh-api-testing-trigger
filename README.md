@@ -1,6 +1,6 @@
 # RapidAPI Testing GitHub Actions
 
-This GitHub Action allows you to trigger the execution of RapidAPI Testing tests.
+This GitHub Action allows you to trigger the execution of [RapidAPI Testing](https://rapidapi.com/testing) tests.
 
 ## Complete example
 
@@ -56,5 +56,4 @@ True/false based on the result of the test execution
 URL of a human readable report of the test execution
 
 ## Help
-
-For any help using this integration, reach out to `support@rapidapi.com`.
+For any help using this integration, reach out to `support@rapidapi.com`. You can also see RapidAPI Testing Guide in our [Help Center](https://docs.rapidapi.com/docs/creating-test-flows). 
