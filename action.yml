@@ -1,7 +1,8 @@
 name: 'RapidAPI Testing Trigger'
 description: 'Trigger an API test on RapidAPI Testing'
-icon: 'globe'
-color: 'blue'
+branding:
+  icon: 'globe'
+  color: 'blue'
 inputs:
   test:
     description: 'ID of the test to run'
@@ -16,7 +17,7 @@ inputs:
 outputs:
   time:
     description: 'How long the test took to execute'
-  succesful:
+  successful:
     description: 'True or false based on the outcome of the test execution'
   reportUrl:
     description: 'Url for the full test execution URL'
