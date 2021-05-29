@@ -41,7 +41,7 @@ jobs:
 - `AWS-EU-WEST-3` : Paris
 - `AWS-SA-EAST-1` : São Paulo
 
-### `location`
+### `environment`
 The environment you want to run the test in. If you don't use environment omit this parameter
 
 ## Outputs
