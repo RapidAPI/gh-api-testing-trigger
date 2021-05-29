@@ -14,7 +14,7 @@ jobs:
     steps:
     - name: Execute Tests
       id: tstExec
-      uses: RapidAPI/gh-api-testing-trigger@v0.0.3
+      uses: RapidAPI/gh-api-testing-trigger@v0.0.2
       with:
         test: 'YOUR_TEST_ID'
         location: 'AWS-US-WEST-2'
