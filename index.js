@@ -53,6 +53,7 @@ core.group('Execute Test', async () => {
 
     // 3. Set Response Data
     core.setOutput("time", testResult.executionTime);
+    core.setOutput("succesful", testResult.succesful);
     core.setOutput("successful", testResult.successful);
     core.setOutput("computedStatus", testResult.computedStatus);
 
