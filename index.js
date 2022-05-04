@@ -6,7 +6,7 @@ const axios = require('axios');
 const WAIT_TIME = 1000;
 const MAX_TRIES = 300;
 const FIRST_WAIT = 2000;
-const API_URL = "https://rapidapi.com/testing/api/trigger";
+
 
 // INPUTS
 const TEST_ID = core.getInput('test');
@@ -14,6 +14,9 @@ console.log(`Executing Test ID: ${TEST_ID}`);
 
 const LOCATION = core.getInput('location');
 console.log(`Executing In Location: ${LOCATION}`);
+
+const INSTANCE = core.getInput('instance') || "rapidapi";
+console.log(`Executing In Instance: ${INSTANCE}`);
 
 const ENVIRONMENT = core.getInput('environment') || null;
 console.log(`Executing In Env: ${ENVIRONMENT}`);
@@ -30,7 +33,10 @@ function sleep(time) {
 core.group('Execute Test', async () => {
     // 1. Trigger Test
     const envString = ENVIRONMENT ? `&enviroment=${ENVIRONMENT}` : '';
+    const instance = INSTANCE;
+    const API_URL = `https://${INSTANCE}.com/testing/api/trigger`
     const testTrigger = (await axios.get(`${API_URL}/test/${TEST_ID}/execute?source=gh_action&location=${LOCATION}${envString}`)).data;
+    console.log(testTrigger)
     const reportUrl = testTrigger.reportUrl;
     console.log(testTrigger.message);
     core.setOutput("reportUrl", reportUrl);
