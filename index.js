@@ -15,7 +15,7 @@ console.log(`Executing Test ID: ${TEST_ID}`);
 const LOCATION = core.getInput('location');
 console.log(`Executing In Location: ${LOCATION}`);
 
-const INSTANCE = core.getInput('instance');
+const INSTANCE = core.getInput('instance') || "rapidapi";
 console.log(`Executing In Instance: ${INSTANCE}`);
 
 const ENVIRONMENT = core.getInput('environment') || null;
