@@ -6,7 +6,7 @@ const axios = require('axios');
 const WAIT_TIME = 1000;
 const MAX_TRIES = 300;
 const FIRST_WAIT = 2000;
-const API_URL = "";
+
 
 // INPUTS
 const TEST_ID = core.getInput('test');
@@ -34,7 +34,7 @@ core.group('Execute Test', async () => {
     // 1. Trigger Test
     const envString = ENVIRONMENT ? `&enviroment=${ENVIRONMENT}` : '';
     const instance = INSTANCE;
-    const API_URL = `https://${INSTANCE}/testing/api/trigger`
+    const API_URL = `https://${INSTANCE}.com/testing/api/trigger`
     const testTrigger = (await axios.get(`${API_URL}/test/${TEST_ID}/execute?source=gh_action&location=${LOCATION}${envString}`)).data;
     console.log(testTrigger)
     const reportUrl = testTrigger.reportUrl;
