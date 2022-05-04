@@ -6,9 +6,6 @@ const axios = require('axios');
 const WAIT_TIME = 1000;
 const MAX_TRIES = 300;
 const FIRST_WAIT = 2000;
-//jeff.hub.rapidapi
-//rapidapi
-=`https://{$instance}/testing/api/trigger`
 const API_URL = "";
 
 // INPUTS
