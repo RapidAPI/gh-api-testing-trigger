@@ -34,7 +34,7 @@ core.group('Execute Test', async () => {
     // 1. Trigger Test
     const envString = ENVIRONMENT ? `&enviroment=${ENVIRONMENT}` : '';
     const instance = INSTANCE;
-    const API_URL = =`https://${INSTANCE}/testing/api/trigger`
+    const API_URL = `https://${INSTANCE}/testing/api/trigger`
     const testTrigger = (await axios.get(`${API_URL}/test/${TEST_ID}/execute?source=gh_action&location=${LOCATION}${envString}`)).data;
     console.log(testTrigger)
     const reportUrl = testTrigger.reportUrl;
