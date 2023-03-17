@@ -23,4 +23,4 @@ outputs:
     description: 'Url for the full test execution URL'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
