@@ -6,7 +6,7 @@ const axios = require('axios');
 const WAIT_TIME = 1000;
 const MAX_TRIES = 300;
 const FIRST_WAIT = 2000;
-const API_URL = (tenant) => {"https://${tenant}/testing/api/trigger"}
+const api_url = (tenant) => {"https://${tenant}/testing/api/trigger"}
 
 // INPUTS
 
@@ -34,7 +34,7 @@ function sleep(time) {
 core.group('Execute Test', async () => {
     // 1. Trigger Test
     const envString = ENVIRONMENT ? `&enviroment=${ENVIRONMENT}` : '';
-    const testTrigger = (await axios.get(`${API_URL}/test/${TEST_ID}/execute?source=gh_action&location=${LOCATION}${envString}`)).data;
+    const testTrigger = (await axios.get(`${api_url(TENANT)}/test/${TEST_ID}/execute?source=gh_action&location=${LOCATION}${envString}`)).data;
     const reportUrl = testTrigger.reportUrl;
     console.log(testTrigger.message);
     core.setOutput("reportUrl", reportUrl);
@@ -50,7 +50,7 @@ core.group('Execute Test', async () => {
         tries < MAX_TRIES // safety
     ) {
         await sleep(WAIT_TIME);
-        testResult = (await axios.get(`${API_URL}/execution/${executionId}/status`)).data;
+        testResult = (await axios.get(`${api_url(TENANT)}/execution/${executionId}/status`)).data;
     }
     delete testResult.report;
     console.log(testResult);
