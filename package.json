@@ -1,6 +1,6 @@
 {
   "name": "RapidAPI-testing-github-action",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Executes RapidAPI tests as a GitHub action",
   "main": "index.js",
   "scripts": {

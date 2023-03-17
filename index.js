@@ -47,7 +47,7 @@ core.group('Execute Test', async () => {
         tries < MAX_TRIES // safety
     ) {
         await sleep(WAIT_TIME);
-        testResult = (await axios.get(`${API_URL}}/execution/${executionId}/status`)).data;
+        testResult = (await axios.get(`${API_URL}/execution/${executionId}/status`)).data;
     }
     delete testResult.report;
     console.log(testResult);
