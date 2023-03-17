@@ -1,6 +1,7 @@
 # RapidAPI Testing GitHub Actions
 
-This GitHub Action allows you to trigger the execution of [RapidAPI Testing](https://rapidapi.com/testing) tests.
+This GitHub Action allows you to trigger the execution of [RapidAPI Testing](https://rapidapi.com/testing) tests. This is especially useful
+during CI/CD to ensure new deployments are functioning as expected.
 
 ## Complete example
 
@@ -44,6 +45,10 @@ jobs:
 ### `environment`
 The environment you want to run the test in. If you don't use environment omit this parameter
 
+### `tenant`
+
+The tenant to run the test against. Defaults to the public Hub `rapidapi.com`.
+
 ## Outputs
 
 ### `time`
@@ -59,4 +64,4 @@ URL of a human-readable report of the test execution
 A human-readable test status that matches the status values on the test dashboard in the UI
 
 ## Help
-For any help using this integration, reach out to `support@rapidapi.com`. You can also see RapidAPI Testing Guide in our [Help Center](https://docs.rapidapi.com/docs/creating-test-flows). 
+For any help using this integration, reach out to `support@rapidapi.com`. You can also see RapidAPI Testing Guide in our [Help Center](https://docs.rapidapi.com/docs/creating-test-flows).

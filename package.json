@@ -1,7 +1,7 @@
 {
   "name": "RapidAPI-testing-github-action",
-  "version": "0.0.3",
-  "description": "",
+  "version": "0.0.4",
+  "description": "Executes RapidAPI tests as a GitHub action",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

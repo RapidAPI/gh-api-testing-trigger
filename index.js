@@ -6,9 +6,13 @@ const axios = require('axios');
 const WAIT_TIME = 1000;
 const MAX_TRIES = 300;
 const FIRST_WAIT = 2000;
-const API_URL = "https://rapidapi.com/testing/api/trigger";
+const API_URL = (tenant) => {"https://${tenant}/testing/api/trigger"}
 
 // INPUTS
+
+const TENANT = core.getInput('tenant');
+console.log(`Executing Test Against Tenant: ${API_URL}`);
+
 const TEST_ID = core.getInput('test');
 console.log(`Executing Test ID: ${TEST_ID}`);
 
