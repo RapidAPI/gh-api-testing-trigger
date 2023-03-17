@@ -6,13 +6,8 @@ const axios = require('axios');
 const WAIT_TIME = 1000;
 const MAX_TRIES = 300;
 const FIRST_WAIT = 2000;
-const api_url = (tenant) => {"https://${tenant}/testing/api/trigger"}
 
 // INPUTS
-
-const TENANT = core.getInput('tenant');
-console.log(`Executing Test Against Tenant: ${API_URL}`);
-
 const TEST_ID = core.getInput('test');
 console.log(`Executing Test ID: ${TEST_ID}`);
 
@@ -22,6 +17,8 @@ console.log(`Executing In Location: ${LOCATION}`);
 const ENVIRONMENT = core.getInput('environment') || null;
 console.log(`Executing In Env: ${ENVIRONMENT}`);
 
+const API_URL = `https://${core.getInput('tenant')}/testing/api/trigger`;
+console.log(`Executing Test Against: ${API_URL}`);
 
 function sleep(time) {
     return new Promise((res, rej) => {
@@ -34,7 +31,7 @@ function sleep(time) {
 core.group('Execute Test', async () => {
     // 1. Trigger Test
     const envString = ENVIRONMENT ? `&enviroment=${ENVIRONMENT}` : '';
-    const testTrigger = (await axios.get(`${api_url(TENANT)}/test/${TEST_ID}/execute?source=gh_action&location=${LOCATION}${envString}`)).data;
+    const testTrigger = (await axios.get(`${API_URL}/test/${TEST_ID}/execute?source=gh_action&location=${LOCATION}${envString}`)).data;
     const reportUrl = testTrigger.reportUrl;
     console.log(testTrigger.message);
     core.setOutput("reportUrl", reportUrl);
@@ -50,7 +47,7 @@ core.group('Execute Test', async () => {
         tries < MAX_TRIES // safety
     ) {
         await sleep(WAIT_TIME);
-        testResult = (await axios.get(`${api_url(TENANT)}/execution/${executionId}/status`)).data;
+        testResult = (await axios.get(`${API_URL}}/execution/${executionId}/status`)).data;
     }
     delete testResult.report;
     console.log(testResult);
