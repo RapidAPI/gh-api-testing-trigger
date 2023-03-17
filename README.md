@@ -58,5 +58,10 @@ URL of a human-readable report of the test execution
 ### `computedStatus`
 A human-readable test status that matches the status values on the test dashboard in the UI
 
+## Building
+
+`vercel/ncc` is used to build action to avoid checking in the `node_modules` directory.
+Use `npm build` to compile the action into the `dist/` directory.
+
 ## Help
 For any help using this integration, reach out to `support@rapidapi.com`. You can also see RapidAPI Testing Guide in our [Help Center](https://docs.rapidapi.com/docs/creating-test-flows). 
