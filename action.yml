@@ -11,6 +11,10 @@ inputs:
     description: 'The location the test will be executed in'
     required: true
     default: 'AWS-US-EAST-1'
+  tenant:
+    description: 'The Rapid tenant to run the tests against'
+    required: false
+    default: 'rapidapi.com'
   environment:
     description: 'The environment ID the test will run in'
     required: false
@@ -22,5 +26,5 @@ outputs:
   reportUrl:
     description: 'Url for the full test execution URL'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'

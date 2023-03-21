@@ -6,7 +6,6 @@ const axios = require('axios');
 const WAIT_TIME = 1000;
 const MAX_TRIES = 300;
 const FIRST_WAIT = 2000;
-const API_URL = "https://rapidapi.com/testing/api/trigger";
 
 // INPUTS
 const TEST_ID = core.getInput('test');
@@ -18,6 +17,8 @@ console.log(`Executing In Location: ${LOCATION}`);
 const ENVIRONMENT = core.getInput('environment') || null;
 console.log(`Executing In Env: ${ENVIRONMENT}`);
 
+const API_URL = `https://${core.getInput('tenant')}/testing/api/trigger`;
+console.log(`Executing Test Against: ${API_URL}`);
 
 function sleep(time) {
     return new Promise((res, rej) => {
